@@ -88,19 +88,19 @@ public class HomeFragment extends Fragment {
 
         rcv = view.findViewById(R.id.recylerview);
 
-        RetrofitInstance.getInstance().apiInterface.getUsers().enqueue(new Callback<List<UserModel>>() {
-            @Override
-            public void onResponse(Call<List<UserModel>> call, Response<List<UserModel>> response) {
-                userslist = response.body();
-                rcv.setLayoutManager(new LinearLayoutManager(thiscontext));
-                rcv.setAdapter(new UserAdapter(thiscontext,userslist));
-            }
-
-            @Override
-            public void onFailure(Call<List<UserModel>> call, Throwable t) {
-
-            }
-        });
+//        RetrofitInstance.getInstance().apiInterface.getUsers().enqueue(new Callback<List<UserModel>>() {
+//            @Override
+//            public void onResponse(Call<List<UserModel>> call, Response<List<UserModel>> response) {
+//                userslist = response.body();
+//                rcv.setLayoutManager(new LinearLayoutManager(thiscontext));
+//                rcv.setAdapter(new UserAdapter(thiscontext,userslist));
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<UserModel>> call, Throwable t) {
+//
+//            }
+//        });
 
         return view;
     }

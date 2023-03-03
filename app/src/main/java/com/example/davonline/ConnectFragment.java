@@ -3,10 +3,19 @@ package com.example.davonline;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,6 +67,18 @@ public class ConnectFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        RetrofitInstance.getInstance().apiInterface.getData("1","121","121","2121","213").enqueue(new Callback<Login>() {
+            @Override
+            public void onResponse(Call<Login> call, Response<Login> response) {
+                Log.d("connect new",""+response.body().getStatus());
+            }
+            @Override
+            public void onFailure(Call<Login> call, Throwable t) {
+                Log.d("connect new","errror "+t.getMessage());
+                Toast.makeText(getContext(), "failure", Toast.LENGTH_SHORT);
+            }
+        });
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_connect, container, false);
     }
